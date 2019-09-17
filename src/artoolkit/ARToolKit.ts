@@ -1,4 +1,4 @@
-import Module = require("./lib/arjs.artoolkit.min.js");
+import * as Module from "./lib/arjs.artoolkit.min.js";
 
 export class ARToolKit {
 	public static AR_DEBUG_DISABLE: number = 0;
@@ -218,7 +218,8 @@ export class ARToolKit {
 	}
 
 	public static bytesToString(array: Uint8Array) {
-		return String.fromCharCode.apply(String, array);
+		var narr = Array.from(array);
+		return String.fromCharCode.apply(String, narr);
 	}
 
 	public static parseMultiFile(bytes: Uint8Array) {
