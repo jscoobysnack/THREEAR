@@ -400,7 +400,7 @@ export class ARToolKitController {
 	 */
 	public loadMultiMarker(
 		markerURL: string,
-		onSuccess: () => any,
+		onSuccess: (id: number, markerNum: number) => any,
 		onError: () => any
 	) {
 		return ARToolKit.addMultiMarker(this.id, markerURL, onSuccess, onError);

@@ -6,6 +6,7 @@ import { Source } from "./THREEAR";
 import { PatternMarker } from "./PatternMarker";
 import { BarcodeMarker } from "./BarcodeMarker";
 import cameraParametersData from "./artoolkit/CameraParameters";
+import { MultiMarker } from "./MultiMarker";
 
 export interface MarkerPositioningParameters {
 	smooth: boolean;
@@ -186,11 +187,13 @@ export class Controller extends THREE.EventDispatcher {
 		return true;
 	}
 
-	public trackMarker(marker: PatternMarker | BarcodeMarker) {
+	public trackMarker(marker: PatternMarker | BarcodeMarker | MultiMarker) {
 		if (marker instanceof PatternMarker) {
 			this.trackPatternMarker(marker);
 		} else if (marker instanceof BarcodeMarker) {
 			this.trackBarcode(marker);
+		} else if (marker instanceof MultiMarker) {
+			this.trackMultiMarker(marker);
 		}
 	}
 
@@ -405,7 +408,7 @@ export class Controller extends THREE.EventDispatcher {
 		} else {
 			throw Error("No patternUrl defined in parameters");
 		}
-	}
+  }
 
 	private trackBarcode(marker: BarcodeMarker) {
 		if (this.arController === null) {
@@ -422,6 +425,29 @@ export class Controller extends THREE.EventDispatcher {
 			this.arController.trackBarcodeMarkerId(barcodeMarkerId, marker.size);
 		} else {
 			throw Error("No barcodeValue defined in parameters");
+		}
+  }
+  
+	private trackMultiMarker(marker: MultiMarker) {
+		if (this.arController === null) {
+			return;
+		}
+
+		this.markers.pattern.push(marker);
+
+		// start tracking this pattern
+		const onSuccess = (markerId: number, markerNum: number) => {
+      marker.id = markerId;
+      console.warn(`Loaded multi marker: ${markerId} Count: ${markerNum}`);
+			(this.arController as any).trackPatternMarkerId(markerId, marker.size);
+		};
+		const onError = () => {
+			throw Error();
+		};
+		if (marker.patternUrl) {
+			this.arController.loadMultiMarker(marker.patternUrl, onSuccess, onError);
+		} else {
+			throw Error("No multi patternUrl defined in parameters");
 		}
 	}
 
