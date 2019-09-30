@@ -32,5 +32,8 @@ module.exports = {
   },
   plugins: [
     new PrettierPlugin()
-  ]
+  ],
+  node: {
+    fs: 'empty'
+  }
 };
