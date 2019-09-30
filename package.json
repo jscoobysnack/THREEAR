@@ -29,6 +29,7 @@
   "author": "James Milner",
   "license": "MIT and LGPLv3",
   "dependencies": {
+    "fs": "0.0.1-security",
     "three": "^0.106.2"
   },
   "devDependencies": {

@@ -28,12 +28,10 @@ module.exports = {
       commonjs2: 'three',
       amd: 'three',
       root: 'THREE' // indicates global variable
-    }
+    },
+    fs: "fs"
   },
   plugins: [
     new PrettierPlugin()
-  ],
-  node: {
-    fs: 'empty'
-  }
+  ]
 };
