@@ -159,7 +159,7 @@ export declare class ARToolKitController {
      * number of sub-markers of the loaded marker on a successful load.
      * @param {function} onError - The error callback. Called with the encountered error if the load fails.
      */
-    loadMultiMarker(markerURL: string, onSuccess: () => any, onError: () => any): void;
+    loadMultiMarker(markerURL: string, onSuccess: (id: number, markerNum: number) => any, onError: () => any): void;
     /**
      * Populates the provided float array with the current transformation for the specified marker. After
      * a call to detectMarker, all marker information will be current. Marker transformations can then be

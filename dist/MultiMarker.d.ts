@@ -6,15 +6,15 @@ import { BaseMarker } from "./BaseMarker";
  * @param parameters parameters for determining things the pattern URL and minimum confidence
  */
 interface MultiMarkerParameters {
-	patternUrl: string;
-	markerObject: Object3D;
-	size?: number;
-	minConfidence?: number;
+    patternUrl: string;
+    markerObject: Object3D;
+    size?: number;
+    minConfidence?: number;
 }
 export declare class MultiMarker extends BaseMarker {
-	static count: number;
-	patternUrl: string;
-	markerObject: Object3D;
-	constructor(parameters: MultiMarkerParameters);
+    static count: number;
+    patternUrl: string;
+    markerObject: Object3D;
+    constructor(parameters: MultiMarkerParameters);
 }
 export default MultiMarker;

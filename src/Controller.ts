@@ -408,7 +408,7 @@ export class Controller extends THREE.EventDispatcher {
 		} else {
 			throw Error("No patternUrl defined in parameters");
 		}
-  }
+	}
 
 	private trackBarcode(marker: BarcodeMarker) {
 		if (this.arController === null) {
@@ -426,8 +426,8 @@ export class Controller extends THREE.EventDispatcher {
 		} else {
 			throw Error("No barcodeValue defined in parameters");
 		}
-  }
-  
+	}
+
 	private trackMultiMarker(marker: MultiMarker) {
 		if (this.arController === null) {
 			return;
@@ -437,8 +437,8 @@ export class Controller extends THREE.EventDispatcher {
 
 		// start tracking this pattern
 		const onSuccess = (markerId: number, markerNum: number) => {
-      marker.id = markerId;
-      console.warn(`Loaded multi marker: ${markerId} Count: ${markerNum}`);
+			marker.id = markerId;
+			console.warn(`Loaded multi marker: ${markerId} Count: ${markerNum}`);
 			(this.arController as any).trackPatternMarkerId(markerId, marker.size);
 		};
 		const onError = () => {
