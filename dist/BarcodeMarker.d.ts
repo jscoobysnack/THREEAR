@@ -9,15 +9,15 @@ import { BaseMarker } from "./BaseMarker";
  * @param parameters parameters for determing things like the barcode number and the minimum confidence
  */
 interface BarcodeMarkerParameters {
-    barcodeValue: number;
-    markerObject: Object3D;
-    size?: number;
-    minConfidence?: number;
+	barcodeValue: number;
+	markerObject: Object3D;
+	size?: number;
+	minConfidence?: number;
 }
 export declare class BarcodeMarker extends BaseMarker {
-    static count: number;
-    barcodeValue: number;
-    markerObject: Object3D;
-    constructor(parameters: BarcodeMarkerParameters);
+	static count: number;
+	barcodeValue: number;
+	markerObject: Object3D;
+	constructor(parameters: BarcodeMarkerParameters);
 }
 export default BarcodeMarker;

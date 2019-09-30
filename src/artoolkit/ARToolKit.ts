@@ -218,7 +218,7 @@ export class ARToolKit {
 	}
 
 	public static bytesToString(array: Uint8Array) {
-		var narr = Array.from(array);
+		const narr = Array.from(array);
 		return String.fromCharCode.apply(String, narr);
 	}
 
